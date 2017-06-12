@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+]>
+<modification>
+	<file name="catalog/controller/account/account.php">
+		<operation>
+			<search position="after"><![CDATA[
+				public function index() {
+			]]></search>
+			<add><![CDATA[
+				return MsLoader::getInstance()->getRegistry()->get('load')->controller('multimerch/account_account');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="catalog/controller/extension/module/account.php">
+		<operation>
+			<search position="after"><![CDATA[
+				public function index() {
+			]]></search>
+			<add><![CDATA[
+				return MsLoader::getInstance()->getRegistry()->get('load')->controller('multimerch/module_account');
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/common/cart.tpl">
+		<operation error="log">
+			<search position="before"><![CDATA[
+				<a href="<?php echo $cart; ?>">
+			]]></search>
+			<add><![CDATA[
+				<?php if( isset($is_seller) && $is_seller == true ){ ?>
+          			<a href="<?php echo $offer; ?>"><strong><i class="fa fa-book"></i> <?php echo $ms_btn_create_offer; ?></strong></a>&nbsp;&nbsp;&nbsp;
+          		<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/common/cart.php">
+		<operation error="log">
+			<search position="before"><![CDATA[
+				$data['products'] = array();
+			]]></search>
+			<add><![CDATA[
+				$data['ms_btn_create_offer'] = $this->language->get('ms_btn_create_offer');
+				$data['offer'] = $this->url->link('multimerch/account_offer', '', true);
+
+				if($this->customer->isLogged()){
+					$data['is_seller'] =  MsLoader::getInstance()->MsSeller->isCustomerSeller($this->customer->getId());
+				}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/checkout/cart.tpl">
+		<operation error="log">
+			<search position="after"><![CDATA[
+				<div class="buttons clearfix">
+			]]></search>
+			<add><![CDATA[
+				<?php if( isset($is_seller) && $is_seller == true ){ ?>
+          			<div class="pull-right"><a href="<?php echo $offer; ?>" style="margin-left: 5px;" class="btn btn-default"><?php echo $ms_btn_create_offer; ?></a></div>
+          		<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/checkout/cart.php">
+		<operation error="log">
+			<search position="before"><![CDATA[
+				$data['products'] = array();
+			]]></search>
+			<add><![CDATA[
+				$this->load->language('multiseller/multiseller');
+				$data['ms_btn_create_offer'] = $this->language->get('ms_btn_create_offer');
+				$data['offer'] = $this->url->link('multimerch/account_offer', '', true);
+
+				if($this->customer->isLogged()){
+					$data['is_seller'] =  MsLoader::getInstance()->MsSeller->isCustomerSeller($this->customer->getId());
+				}
+			]]></add>
+		</operation>
+	</file>
+
+</modification>

@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+]>
+<modification>
+	<id>MultiMerch Digital Multivendor Marketplace Core</id>
+	<author>http://multimerch.com/</author>
+
+	<!-- MultiMerch Loader startup -->
+    <file name="system/startup.php">
+        <operation error="log">
+            <search position="replace"><![CDATA[
+require_once(modification(DIR_SYSTEM . 'engine/loader.php'));
+			]]></search>
+            <add><![CDATA[
+// Init MultiMerch loaders
+require_once DIR_SYSTEM . '/vendor/multimerchlib/module/init_multimerch.php';
+            ]]></add>
+        </operation>
+
+        <operation error="log">
+            <search position="replace"><![CDATA[
+require_once(modification(DIR_SYSTEM . 'engine/controller.php'));
+			]]></search>
+            <add><![CDATA[//require_once(modification(DIR_SYSTEM . 'engine/controller.php'));]]></add>
+        </operation>
+
+		<operation error="log">
+			<search position="after"><![CDATA[
+                function start($application_config) {
+            ]]></search>
+			<add><![CDATA[
+                if(version_compare(VERSION, '2.3', '>=')) {
+                    // fix scope of variables for MultiMerch files
+                    global $registry;
+                    global $config;
+                }
+            ]]></add>
+		</operation>
+    </file>
+
+	<!-- Enable "-" in routes -->
+	<file name="system/engine/action.php">
+		<operation error="log">
+			<search position="replace"><![CDATA[$parts = explode('/', preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route));]]></search>
+			<add><![CDATA[$parts = explode('/', preg_replace('/[^a-zA-Z0-9\-_\/]/', '', (string)$route));]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/controller/startup/router.php" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+                $route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
+			]]></search>
+			<add><![CDATA[
+				$route = preg_replace('/[^a-zA-Z0-9-_\/]/', '', (string)$route);
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/startup/router.php" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+                $route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
+			]]></search>
+			<add><![CDATA[
+				$route = preg_replace('/[^a-zA-Z0-9-_\/]/', '', (string)$route);
+			]]></add>
+		</operation>
+	</file>
+
+    <!-- IE console fix -->
+    <file name="catalog/view/theme/*/template/common/header.tpl">
+        <operation>
+            <search position="before"><![CDATA[
+				<?php foreach ($scripts as $script) { ?>
+			]]></search>
+            <add><![CDATA[
+				<script type="text/javascript"> if (!window.console) console = {log: function() {}}; var config_language = <?php echo $dt_language; ?>; </script>
+			]]></add>
+        </operation>
+    </file>
+
+	<!-- load common multimerch files -->
+	<file name="catalog/controller/common/header.php">
+		<operation error="log">
+			<search position="after"><![CDATA[
+				public function index() {
+			]]></search>
+			<add><![CDATA[
+				$data = array_merge(MsLoader::getInstance()->getRegistry()->get('load')->language('multiseller/multiseller'), isset($data) ? $data : array());
+				/*$data['ms_total_products'] = MsLoader::getInstance()->MsProduct->getTotalProducts(array(
+					'enabled' => 1,
+					//'product_status' => array(MsProduct::STATUS_ACTIVE),
+				));*/
+
+				/*$data['ms_total_sellers'] = MsLoader::getInstance()->MsSeller->getTotalSellers(array(
+					'seller_status' => array(MsSeller::STATUS_ACTIVE)
+				));*/
+
+				MsLoader::getInstance()->MsHelper->addStyle('multiseller');
+
+				// note: renamed catalog
+				$lang = "view/javascript/multimerch/datatables/lang/" . $this->config->get('config_language') . ".lng";
+				$data['dt_language'] = file_exists(DIR_APPLICATION . $lang) ? "'catalog/$lang'" : "undefined";
+
+				// Add complemented common.js
+				$this->document->addScript('catalog/view/javascript/ms-common.js');
+
+				$data['ms_seller_created'] = MsLoader::getInstance()->MsSeller->isCustomerSeller($this->customer->getId());
+			]]></add>
+		</operation>
+	</file>
+
+
+	<file name="catalog/controller/common/footer.php">
+		<operation>
+			<search position="after"><![CDATA[
+				public function index() {
+			]]></search>
+			<add><![CDATA[
+				$data = array_merge(MsLoader::getInstance()->getRegistry()->get('load')->language('multiseller/multiseller'), isset($data) ? $data : array());
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/common/footer.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+			<div id="powered"><?php echo $powered; ?></div>
+			]]></search>
+			<add><![CDATA[
+			<div id="powered"><?php echo $powered; ?><?php echo $ms_footer; ?></div>
+			]]></add>
+		</operation>
+	</file>
+
+</modification>

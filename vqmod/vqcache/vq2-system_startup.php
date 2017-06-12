@@ -107,10 +107,13 @@ spl_autoload_extensions('.php');
 
 // Engine
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/action.php'), DIR_SYSTEM . 'engine/action.php'));
-require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/controller.php'), DIR_SYSTEM . 'engine/controller.php'));
+//require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/controller.php'), DIR_SYSTEM . 'engine/controller.php'));
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/event.php'), DIR_SYSTEM . 'engine/event.php'));
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/front.php'), DIR_SYSTEM . 'engine/front.php'));
-require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/loader.php'), DIR_SYSTEM . 'engine/loader.php'));
+
+// Init MultiMerch loaders
+require_once DIR_SYSTEM . '/vendor/multimerchlib/module/init_multimerch.php';
+            
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/model.php'), DIR_SYSTEM . 'engine/model.php'));
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/registry.php'), DIR_SYSTEM . 'engine/registry.php'));
 require_once(\VQMod::modCheck(modification(DIR_SYSTEM . 'engine/proxy.php'), DIR_SYSTEM . 'engine/proxy.php'));
@@ -121,5 +124,12 @@ require_once(\VQMod::modCheck(DIR_SYSTEM . 'helper/utf8.php'));
 require_once(\VQMod::modCheck(DIR_SYSTEM . 'helper/json.php'));
 
 function start($application_config) {
+
+                if(version_compare(VERSION, '2.3', '>=')) {
+                    // fix scope of variables for MultiMerch files
+                    global $registry;
+                    global $config;
+                }
+            
 	require_once(\VQMod::modCheck(DIR_SYSTEM . 'framework.php'));	
 }
