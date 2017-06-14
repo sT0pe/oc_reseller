@@ -3,6 +3,15 @@
 	display: inline;
 }
 
+.required label:before {
+	content: "*";
+	color: #EA2E49;
+	font-weight: bold;
+	font-size: 16px;
+	position: relative;
+	margin-right: 3px;
+}
+
 .no_padding {
 	padding: 0 !important;
 }

@@ -355,12 +355,6 @@ class ControllerMultimerchAccountOffer extends Controller
 
 				// Display prices
 
-				$product_tax = $this->tax->getRates($product['price'], $product['tax_class_id']);
-				$tax = 0;
-				foreach ($product_tax as $p){
-					$tax = $p['rate'];
-				}
-
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 					$unit_price = $product['price'];
 
@@ -395,7 +389,7 @@ class ControllerMultimerchAccountOffer extends Controller
 
 				if(isset($product['retail_price']) && $product['retail_price'] != ''){
 					$price_ex_tax  = $product['retail_price']-$product['retail_price']*$product['discount']/100;
-					$price_inc_tax = $price_ex_tax * ($tax + 100)/100;
+					$price_inc_tax = $price_ex_tax * ($product['tax'] + 100)/100;
 				} else {
 					$price_ex_tax  = 0;
 					$price_inc_tax = 0;

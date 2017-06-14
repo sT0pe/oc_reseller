@@ -4,12 +4,6 @@ $(function() {
 		var button = $(this);
 		var id = $(this).attr('id');
 
-        if (msGlobals.config_enable_rte == 1) {
-			for (var instance in CKEDITOR.instances) {
-				CKEDITOR.instances[instance].updateElement();
-			}
-        }
-
 		$.ajax({
 			type: "POST",
 			dataType: "json",

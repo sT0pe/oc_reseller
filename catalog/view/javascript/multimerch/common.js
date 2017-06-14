@@ -28,16 +28,21 @@ $(function() {
 	});
 
 	$(document).ready(function() {
-		$('.input-date-datepicker').datetimepicker({
-				format: 'YYYY-MM-DD',
-				pickTime: false,
-				useCurrent: false,
-				focusOnShow: false,
-				showClear: true
-			})
+		var datepicker = $(".input-date-datepicker");
+		if (datepicker[0]){
+
+            datepicker.datetimepicker({
+			format: 'YYYY-MM-DD',
+			pickTime: false,
+			useCurrent: false,
+			focusOnShow: false,
+			showClear: true
+		})
 			.on('dp.change', function() {
 				$(this).trigger('keyup');
 			})
 			.attr('readonly', 'readonly');
+
+		}
 	});
 });

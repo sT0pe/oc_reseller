@@ -18,7 +18,6 @@ class ControllerMultimerchBase extends Controller {
 		$this->document->addStyle('view/javascript/multimerch/datatables/css/jquery.dataTables.css');
 		$this->document->addScript('view/javascript/multimerch/datatables/js/jquery.dataTables.min.js');
 		$this->document->addScript('view/javascript/multimerch/common.js');
-		//$this->document->addScript('//code.jquery.com/ui/1.11.2/jquery-ui.min.js');
 	}
 
 	// @todo: validation

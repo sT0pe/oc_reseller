@@ -13,8 +13,15 @@ class ControllerMultimerchConversation extends ControllerMultimerchBase {
 		list($sortCol, $sortDir) = $this->MsLoader->MsHelper->getSortParams($sorts, $colMap);
 		$filterParams = $this->MsLoader->MsHelper->getFilterParams($filters, $colMap);
 
+		$arr = array();
+		if(isset($this->request->get['seller_id']) && $this->request->get['seller_id'] != ''){
+			$arr = array(
+				'participant_id' => $this->request->get['seller_id']
+			);
+		}
+
 		$conversations = $this->MsLoader->MsConversation->getConversations(
-			array(),
+			$arr,
 			array(
 				'order_by'  => $sortCol,
 				'order_way' => $sortDir,
@@ -56,7 +63,6 @@ class ControllerMultimerchConversation extends ControllerMultimerchBase {
 	public function index() {
 		$this->document->addScript('//code.jquery.com/ui/1.11.2/jquery-ui.min.js');
 		$this->validate(__FUNCTION__);
-		$this->data['add'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'], 'SSL');
 
 		if (isset($this->session->data['error'])) {
 			$this->data['error_warning'] = $this->session->data['error'];
@@ -76,16 +82,16 @@ class ControllerMultimerchConversation extends ControllerMultimerchBase {
 		$this->data['heading'] = $this->language->get('ms_account_conversations');
 		$this->document->setTitle($this->language->get('ms_account_conversations'));
 
-		$this->data['breadcrumbs'] = $this->MsLoader->MsHelper->admSetBreadcrumbs(array(
-			array(
-				'text' => $this->language->get('ms_menu_multiseller'),
-				'href' => $this->url->link('multimerch/dashboard', '', 'SSL'),
-			),
-			array(
+		$this->data['breadcrumbs'] = array();
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+		$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('ms_account_conversations'),
-				'href' => $this->url->link('multimerch/conversation', '', 'SSL'),
-			)
-		));
+				'href' => $this->url->link('multimerch/conversation', 'token=' . $this->session->data['token'], true)
+		);
 
 		$this->data['column_left'] = $this->load->controller('common/column_left');
 		$this->data['footer'] = $this->load->controller('common/footer');
@@ -138,20 +144,22 @@ class ControllerMultimerchConversation extends ControllerMultimerchBase {
 
 		$this->document->setTitle($this->language->get('ms_account_messages_heading'));
 
-		$this->data['breadcrumbs'] = $this->MsLoader->MsHelper->admSetBreadcrumbs(array(
-			array(
-				'text' => $this->language->get('ms_menu_multiseller'),
-				'href' => $this->url->link('multimerch/dashboard', '', 'SSL'),
-			),
-			array(
-				'text' => $this->language->get('ms_account_conversations'),
-				'href' => $this->url->link('multimerch/conversation', '', 'SSL'),
-			),
-			array(
-				'text' => isset($conversation['title']) ? $conversation['title'] : '',
-				'href' => $this->url->link('multimerch/conversation/view', 'conversation_id=' . $conversation_id, 'SSL'),
-			)
-		));
+		$this->data['breadcrumbs'] = array();
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('ms_account_conversations'),
+			'href' => $this->url->link('multimerch/conversation', 'token=' . $this->session->data['token'], 'SSL'),
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => isset($conversation['title']) ? $conversation['title'] : '',
+			'href' => $this->url->link('multimerch/conversation/view', 'token=' . $this->session->data['token'] . '&conversation_id=' . $conversation_id, 'SSL'),
+		);
 
 		$this->data['send_url'] = $this->url->link('multimerch/conversation/jxSendMessage', 'token=' . $this->session->data['token'], 'SSL');
 

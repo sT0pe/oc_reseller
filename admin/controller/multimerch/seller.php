@@ -62,7 +62,7 @@ class ControllerMultimerchSeller extends ControllerMultimerchBase {
 					'checkbox' => "<input type='checkbox' name='selected[]' value='{$result['seller_id']}' />",
 					'seller' => "<a href='".$this->url->link('customer/customer/edit', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['seller_id'], 'SSL')."'>{$result['c.name']}({$result['ms.nickname']})</a>",
 					'email' => $result['c.email'],
-					'total_offers' =>"<a href='" . $this->url->link('multimerch/seller/update', 'token=' . $this->session->data['token'] . '&seller_id=' . $result['seller_id'], 'SSL') . "'>" . $this->MsLoader->MsSeller->getTotalOffers($result['seller_id']) . "<br/>(view)</a>",
+					'total_offers' =>"<a href='" . $this->url->link('multimerch/seller/update', 'token=' . $this->session->data['token'] . '&seller_id=' . $result['seller_id'] . '&tab=offers', 'SSL') . "'>" . $this->MsLoader->MsSeller->getTotalOffers($result['seller_id']) . "<br/>(view)</a>",
 					'status' => $this->language->get('ms_seller_status_' . $result['ms.seller_status']),
 					'date_created' => date($this->language->get('date_format_short'), strtotime($result['ms.date_created'])),
 					'actions' => $actions
@@ -250,7 +250,6 @@ class ControllerMultimerchSeller extends ControllerMultimerchBase {
 	public function index() {
 
 		$this->document->addScript('//code.jquery.com/ui/1.11.2/jquery-ui.min.js');
-		$this->document->addScript('view/javascript/multimerch/seller-payout.js');
 		$this->document->addStyle('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css');
 
 		$this->validate(__FUNCTION__);
@@ -273,16 +272,17 @@ class ControllerMultimerchSeller extends ControllerMultimerchBase {
 
 		$this->data['link_create_seller'] = $this->url->link('multimerch/seller/create', 'token=' . $this->session->data['token'], 'SSL');
 
-		$this->data['breadcrumbs'] = $this->MsLoader->MsHelper->admSetBreadcrumbs(array(
-			array(
-				'text' => $this->language->get('ms_menu_multiseller'),
-				'href' => $this->url->link('multimerch/dashboard', '', 'SSL'),
-			),
-			array(
-				'text' => $this->language->get('ms_catalog_sellers_breadcrumbs'),
-				'href' => $this->url->link('multimerch/seller', '', 'SSL'),
-			)
-		));
+		$this->data['breadcrumbs'] = array();
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('ms_catalog_sellers_breadcrumbs'),
+			'href' => $this->url->link('multimerch/seller', 'token=' . $this->session->data['token'], 'SSL'),
+		);
 
 		$this->data['column_left'] = $this->load->controller('common/column_left');
 		$this->data['footer'] = $this->load->controller('common/footer');
@@ -338,6 +338,12 @@ class ControllerMultimerchSeller extends ControllerMultimerchBase {
 			return $this->response->redirect($this->url->link('multimerch/seller', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
+		if(isset($this->request->get['tab']) && $this->request->get['tab'] == 'offers'){
+			$this->data['tab'] = 'offers';
+		} else {
+			$this->data['tab'] = 'general';
+		}
+
 		$this->load->model('localisation/country');
 		$this->load->model('tool/image');
 
@@ -358,20 +364,21 @@ class ControllerMultimerchSeller extends ControllerMultimerchBase {
 		$this->data['heading'] = $this->language->get('ms_catalog_sellerinfo_heading');
 		$this->document->setTitle($this->language->get('ms_catalog_sellerinfo_heading'));
 
-		$this->data['breadcrumbs'] = $this->MsLoader->MsHelper->admSetBreadcrumbs(array(
-			array(
-				'text' => $this->language->get('ms_menu_multiseller'),
-				'href' => $this->url->link('multimerch/dashboard', '', 'SSL'),
-			),
-			array(
-				'text' => $this->language->get('ms_catalog_sellers_breadcrumbs'),
-				'href' => $this->url->link('multimerch/seller', '', 'SSL'),
-			),
-			array(
-				'text' => $seller['ms.nickname'],
-				'href' => $this->url->link('multimerch/seller/update', '&seller_id=' . $seller['seller_id'], 'SSL'),
-			)
-		));
+		$this->data['breadcrumbs'] = array();
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('ms_catalog_sellers_breadcrumbs'),
+			'href' => $this->url->link('multimerch/seller', 'token=' . $this->session->data['token'], true),
+		);
+		$this->data['breadcrumbs'][] = array(
+			'text' => $seller['ms.nickname'],
+			'href' => $this->url->link('multimerch/seller/update', 'seller_id=' . $seller['seller_id'] . '&token=' . $this->session->data['token'], true),
+		);
+
 
 		$this->load->model('localisation/language');
 		$this->data['languages'] = $this->model_localisation_language->getLanguages();

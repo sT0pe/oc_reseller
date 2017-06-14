@@ -62,8 +62,6 @@
 	</div>
 </div>
 
-<script>
-</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#list-conversations').dataTable( {

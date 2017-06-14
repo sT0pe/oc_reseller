@@ -25,11 +25,12 @@
 		<form id="ms-sellerinfo" class="form-horizontal">
 			<input type="hidden" id="seller_id" name="seller[seller_id]" value="<?php echo $seller['seller_id']; ?>" />
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
-				<li><a href="#tab-offers" data-toggle="tab">Offers</a></li>
+				<li <?php if($tab == 'general') echo 'class="active"'; ?> ><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+				<li <?php if($tab == 'offers')  echo 'class="active"'; ?> ><a href="#tab-offers" data-toggle="tab">Offers</a></li>
+				<li><a href="#tab-conversations" data-toggle="tab">Conversations</a></li>
 			</ul>
 			<div class="tab-content">
-			<div class="tab-pane active" id="tab-general">
+			<div class="tab-pane <?php if($tab == 'general') echo 'active'; ?>" id="tab-general">
 
 			<fieldset>
 			<legend><?php echo $ms_catalog_sellerinfo_customer_data; ?></legend>
@@ -143,17 +144,17 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label class="col-sm-2 control-label"><?php echo $ms_catalog_sellerinfo_avatar; ?></label>
-				<div class="col-sm-10">
-					<div id="sellerinfo_avatar_files">
-						<?php if (!empty($seller['avatar'])) { ?>
-						<input type="hidden" name="seller[avatar_name]" value="<?php echo $seller['avatar']['name']; ?>" />
-						<img src="<?php echo $seller['avatar']['thumb']; ?>" />
-						<?php } ?>
+			<?php if (!empty($seller['avatar'])) { ?>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><?php echo $ms_catalog_sellerinfo_avatar; ?></label>
+					<div class="col-sm-10">
+						<div id="sellerinfo_avatar_files">
+							<input type="hidden" name="seller[avatar_name]" value="<?php echo $seller['avatar']['name']; ?>" />
+							<img src="<?php echo $seller['avatar']['thumb']; ?>" />
+						</div>
 					</div>
 				</div>
-			</div>
+			<?php } ?>
 
 			<?php $msSeller = new ReflectionClass('MsSeller'); ?>
 			<div class="form-group">
@@ -184,7 +185,7 @@
 
 
 			<!-- begin offer tab -->
-			<div class="tab-pane" id="tab-offers">
+			<div class="tab-pane <?php if($tab == 'offers') echo 'active'; ?>" id="tab-offers">
 				<div class="form-group required">
 					<label for="offer-limit" class="col-sm-2 control-label">Offer Limit: </label>
 					<div class="col-sm-10 control-inline">
@@ -195,10 +196,10 @@
 					<table class="table table-bordered table-hover" style="text-align: center" id="list-offers">
 						<thead>
 						<tr>
-							<td class="mm_size_tiny">ID</td>
-							<td class="mm_size_medium">Last Update</td>
-							<td class="mm_size_large">Name</td>
-							<td class="mm_size_small">Total</td>
+							<td class="mm_size_tiny"><?php echo $ms_offer_id; ?></td>
+							<td class="mm_size_medium"><?php echo $ms_offer_update; ?></td>
+							<td class="mm_size_large"><?php echo $ms_offer_name; ?></td>
+							<td class="mm_size_small"><?php echo $ms_offer_total; ?></td>
 						</tr>
 						<tr class="filter">
 							<td><input type="text"/></td>
@@ -214,12 +215,83 @@
 			</div>
 			<!-- end offer tab -->
 
+			<!-- begin conversation tab -->
+			<div class="tab-pane" id="tab-conversations">
+				<div class="panel-body">
+					<div class="table-responsive">
+						<form class="form-inline" action="" method="post" enctype="multipart/form-data" id="form">
+							<table class="mm_dashboard_table table table-borderless table-hover" id="list-conversations">
+								<thead>
+								<tr>
+									<td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
+									<td><?php echo $ms_account_conversations_title; ?></td>
+									<td><?php echo $ms_account_conversations_author; ?></td>
+									<td class="medium"><?php echo $ms_account_conversations_date_added; ?></td>
+									<td class="large"><?php echo $ms_last_message; ?></td>
+									<td class="large"></td>
+								</tr>
+								<tr class="filter">
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- end conversation tab -->
+
 			</div>
 		</div>
 		</form>
 	  </div>
 	</div>
   </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#list-conversations').dataTable( {
+            "sAjaxSource": "index.php?route=multimerch/conversation/getTableData&seller_id=<?php echo $seller['seller_id']; ?>=&token=<?php echo $token; ?>",
+            "aaSorting": [[ 3, "desc" ]],
+            "aoColumns": [
+                { "mData": "checkbox", "bSortable": false },
+                { "mData": "title" , "bSortable": false },
+                { "mData": "author" , "bSortable": false },
+                { "mData": "date_created" },
+                { "mData": "last_message_date" },
+                { "mData": "actions" , "bSortable": false, "sClass": "text-right"}
+            ]
+        });
+
+        $(document).on('click', '.ms-button-delete', function() {
+            return confirm("<?php echo $this->language->get('text_confirm'); ?>");
+        });
+
+        $(document).on('click', '#delete-conversation', function(e) {
+            e.preventDefault();
+            var form = $('#form').serialize();
+            if(form) {
+                if(confirm('Are you sure?')) {
+                    $.ajax({
+                        url: 'index.php?route=multimerch/conversation/delete&token=<?php echo $token; ?>',
+                        data: form,
+                        type: 'post',
+                        dataType: 'json',
+                        complete: function(response) {
+                            console.log(response);
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
 <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>

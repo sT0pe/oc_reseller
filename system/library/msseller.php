@@ -112,7 +112,7 @@ final class MsSeller extends Model {
 					seller_approved = " . (isset($data['approved']) ? (int)$data['approved'] : 0) . ",
 					nickname = '" . $this->db->escape($data['nickname']) . "',
 					avatar = '" . $this->db->escape($avatar) . "',
-					offer_limit = '" . (isset($data['offer_limit']) ? (int)$data['offer_limit'] : 0) . "',
+					offer_limit = '" . (isset($data['offer_limit']) ? (int)$data['offer_limit'] : 20) . "',
 					date_created = NOW()";
 
 		$this->db->query($sql);
@@ -312,7 +312,6 @@ final class MsSeller extends Model {
 						ms.seller_approved as 'ms.seller_approved',
 						ms.date_created as 'ms.date_created',
 						ms.avatar as 'ms.avatar',
-						ms.offer_limit as 'ms.offer_limit',
 						md.description as 'ms.description',
 						ms.offer_limit as 'ms.offer_limit',
 						(SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE `query` = 'seller_id=" . (int)$seller_id . "' LIMIT 1) AS keyword
@@ -353,11 +352,10 @@ final class MsSeller extends Model {
 		$sql = "SELECT
 					SQL_CALC_FOUND_ROWS"
 					// additional columns
-					. (isset($cols['total_products']) ? "
-						(SELECT COUNT(*) FROM " . DB_PREFIX . "product p
-						LEFT JOIN " . DB_PREFIX . "ms_seller USING (seller_id)
-						WHERE seller_id = ms.seller_id) as total_products,
-					" : "")
+		            . (isset($cols['total_offers']) ? "  
+							(SELECT count(offer.offer_id) as total FROM " . DB_PREFIX . "ms_offer as offer
+							WHERE offer.seller_id = ms.seller_id) as total_offers,
+						" : "")
 
 					// default columns
 					." CONCAT(c.firstname, ' ', c.lastname) as 'c.name',
@@ -436,9 +434,6 @@ final class MsSeller extends Model {
 	}
 	
 	public function deleteSeller($seller_id) {
-		// Delete all seller's settings
-		$this->db->query("DELETE FROM " . DB_PREFIX . "ms_seller_setting WHERE seller_id = '" . (int)$seller_id . "'");
-
 		// Delete seller's description
 		$this->db->query("DELETE FROM " . DB_PREFIX . "ms_seller_description WHERE seller_id = '" . (int)$seller_id . "'");
 

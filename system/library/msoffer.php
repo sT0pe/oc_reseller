@@ -187,7 +187,9 @@ class MsOffer extends Model {
 						(SELECT SUM(offprod.quantity*offprod.retail_price*(100-offprod.discount)/100*(offprod.tax+100)/100) FROM " . DB_PREFIX . "ms_offer_product as offprod
 						JOIN " . DB_PREFIX . "ms_offer USING (offer_id) ) as total_amount,
 					" : "") .
-				" offer.* FROM " . DB_PREFIX . "ms_offer as offer WHERE seller_id = " . (int)$data['seller_id']
+				" offer.* FROM " . DB_PREFIX . "ms_offer as offer "
+		       . (isset($data['seller_id']) ? " WHERE seller_id = " . (int)$data['seller_id'] : ' WHERE 1 = 1')
+
 		       . $wFilters  . " GROUP BY offer_id HAVING 1 = 1 ". $hFilters
 		       . (isset($sort['order_by']) ? " ORDER BY {$sort['order_by']} {$sort['order_way']}" : '')
 		       . (isset($sort['limit']) ? " LIMIT ".(int)$sort['offset'].', '.(int)($sort['limit']) : '');

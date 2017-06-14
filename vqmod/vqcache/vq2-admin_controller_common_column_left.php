@@ -848,6 +848,12 @@ class ControllerCommonColumnLeft extends Controller {
 						);
 
 						$multimerch[] = array(
+							'name'	   => MsLoader::getInstance()->getRegistry()->get('language')->get('ms_menu_offers'),
+							'href'     => MsLoader::getInstance()->getRegistry()->get('url')->link('multimerch/offer', 'token=' . $this->session->data['token'], 'SSL'),
+							'children' => array()
+						);
+
+						$multimerch[] = array(
 							'name'	   => MsLoader::getInstance()->getRegistry()->get('language')->get('ms_menu_conversations'),
 							'href'     => MsLoader::getInstance()->getRegistry()->get('url')->link('multimerch/conversation', 'token=' . $this->session->data['token'], 'SSL'),
 							'children' => array()

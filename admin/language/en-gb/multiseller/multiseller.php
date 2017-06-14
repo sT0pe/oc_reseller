@@ -66,8 +66,6 @@ $_['ms_total_service']= 'Total:';
 $_['ms_button_approve'] = 'Approve';
 $_['ms_button_decline'] = 'Decline';
 
-$_['ms_fixed_coupon_warning'] = "<b>Warning:</b> Fixed (whole cart) coupons can not be applied to multivendor shopping carts and will prevent vendor commissions from being calculated correctly! Percentage coupons will work as expected.";
-$_['ms_voucher_warning'] = "<b>Warning:</b> Gift Vouchers can not be applied to multivendor shopping carts and will prevent vendor commissions from being calculated correctly!";
 $_['ms_error_directory'] = "Warning: Could not create directory: %s. Please create it manually and make it server-writable before proceeding. <br />";
 $_['ms_error_directory_notwritable'] = "Warning: Directory already exists and is not writable: %s. Please make sure it's empty and make it server-writable before proceeding. <br />";
 $_['ms_error_directory_exists'] = "Warning: Directory already exists: %s. Please make sure it's empty before proceeding. <br />";
@@ -95,6 +93,7 @@ $_['text_success']                 = 'Success: You have modified settings!';
 
 $_['ms_none'] = 'None';
 $_['ms_seller'] = 'Seller';
+$_['ms_offer'] = 'Offer';
 $_['ms_all_sellers'] = 'All sellers';
 $_['ms_amount'] = 'Amount';
 $_['ms_product'] = 'Product';
@@ -132,6 +131,10 @@ $_['ms_seller_company'] = 'Company';
 $_['ms_seller_website'] = 'Website';
 $_['ms_seller_phone'] = 'Phone';
 
+$_['ms_offer_id']     = 'ID';
+$_['ms_offer_update'] = 'Last Update';
+$_['ms_offer_name']   = 'Name';
+$_['ms_offer_total']  = 'Total';
 
 $_['ms_name'] = 'Name';
 $_['ms_config_width'] = 'Width';
@@ -159,6 +162,7 @@ $_['ms_menu_options'] = 'Options';
 $_['ms_menu_products'] = 'Products';
 $_['ms_menu_transactions'] = 'Transactions';
 $_['ms_menu_conversations'] = 'Conversations';
+$_['ms_menu_offers'] = 'Offers';
 $_['ms_menu_payment'] = 'Payments';
 $_['ms_menu_shipping_method'] = 'Shipping methods';
 $_['ms_menu_payment_gateway'] = 'Payment gateways';
@@ -541,9 +545,16 @@ $_['button_cancel'] = 'Cancel';
 $_['button_save'] = 'Save';
 $_['ms_action'] = 'Action';
 
+$_['ms_seller_status_' . MsSeller::STATUS_ACTIVE] = 'Active';
+$_['ms_seller_status_' . MsSeller::STATUS_INACTIVE] = 'Inactive';
+$_['ms_seller_status_' . MsSeller::STATUS_DISABLED] = 'Disabled';
+$_['ms_seller_status_' . MsSeller::STATUS_INCOMPLETE] = 'Incomplete';
+$_['ms_seller_status_' . MsSeller::STATUS_DELETED] = 'Deleted';
+$_['ms_seller_status_' . MsSeller::STATUS_UNPAID] = 'Unpaid signup fee';
 
 // Account - Conversations and Messages
 $_['ms_account_conversations'] = 'Conversations';
+$_['ms_account_offers'] = 'Offers';
 $_['ms_account_messages'] = 'Messages';
 $_['ms_sellercontact_success'] = 'Your message has been successfully sent';
 $_['ms_account_conversations_author'] = 'Author';

@@ -46,7 +46,7 @@
 					<td class="tiny"><input type="checkbox" id="check-all"/></td>
 					<td><?php echo $ms_seller; ?></td>
 					<td><?php echo $ms_catalog_sellers_email; ?></td>
-					<td class="tiny">Offers</td>
+					<td class="tiny"><?php echo $ms_offer; ?></td>
 					<td class="medium" id="status_column"><?php echo $ms_catalog_sellers_status; ?></td>
 					<td class="medium"><?php echo $ms_catalog_sellers_date_created; ?></td>
 					<td class="large"><?php echo $ms_action; ?></td>
@@ -59,6 +59,12 @@
 					<td>
 						<select id="status_select">
 							<option></option>
+							<?php $msProduct = new ReflectionClass('MsSeller'); ?>
+							<?php foreach ($msProduct->getConstants() as $cname => $cval) { ?>
+							<?php if (strpos($cname, 'STATUS_') !== FALSE) { ?>
+							<option value="<?php echo $cval; ?>"><?php echo $this->language->get('ms_seller_status_' . $cval); ?></option>
+							<?php } ?>
+							<?php } ?>
 						</select>
 					</td>
 					<td><input type="text" name="filter_date_created" class="input-date-datepicker"/></td>

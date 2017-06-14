@@ -7,6 +7,45 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 		parent::__construct($registry);
 	}
 
+	public function index(){
+		$this->document->addScript('//code.jquery.com/ui/1.11.2/jquery-ui.min.js');
+		$this->validate(__FUNCTION__);
+
+		if (isset($this->session->data['error'])) {
+			$this->data['error_warning'] = $this->session->data['error'];
+			unset($this->session->data['error']);
+		} else {
+			$this->data['error_warning'] = '';
+		}
+
+		if (isset($this->session->data['success'])) {
+			$this->data['success'] = $this->session->data['success'];
+			unset($this->session->data['success']);
+		} else {
+			$this->data['success'] = '';
+		}
+
+		$this->data['token'] = $this->session->data['token'];
+		$this->data['heading'] = $this->language->get('ms_account_offers');
+		$this->document->setTitle($this->language->get('ms_account_offers'));
+
+		$this->data['breadcrumbs'] = array();
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('ms_account_offers'),
+			'href' => $this->url->link('multimerch/offer', 'token=' . $this->session->data['token'], 'SSL'),
+		);
+
+		$this->data['column_left'] = $this->load->controller('common/column_left');
+		$this->data['footer'] = $this->load->controller('common/footer');
+		$this->data['header'] = $this->load->controller('common/header');
+		$this->response->setOutput($this->load->view('multiseller/offer-list.tpl', $this->data));
+	}
 
 	public function getTableData() {
 		$colMap = array(
@@ -18,12 +57,15 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 		list($sortCol, $sortDir) = $this->MsLoader->MsHelper->getSortParams($sorts, $colMap);
 		$filterParams = $this->MsLoader->MsHelper->getFilterParams($filters, $colMap);
 
-		$seller_id = $this->request->get['seller_id'];
+		$arr = array();
+		if(isset($this->request->get['seller_id'])){
+			$arr = array(
+				'seller_id' => $this->request->get['seller_id']
+			);
+		}
 
 		$offers = $this->MsLoader->MsOffer->getOffers(
-			array(
-				'seller_id' => $seller_id
-			),
+			$arr,
 			array(
 				'order_by'  => $sortCol,
 				'order_way' => $sortDir,
@@ -42,7 +84,7 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 		$columns = array();
 
 		foreach ($offers as $offer) {
-			$offer_products = $this->MsLoader->MsOffer->getOfferProducts(array('offer_id' => $offer['offer_id'], 'seller_id' => $seller_id));
+			$offer_products = $this->MsLoader->MsOffer->getOfferProducts(array('offer_id' => $offer['offer_id']));
 
 			$offer_total = 0;
 
@@ -54,7 +96,7 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 				$offer,
 				array(
 					'offer_id' => $offer['offer_id'],
-					'offer_name' => '<a href="' . $this->url->link('multimerch/offer/viewOffer', 'token=' . $this->session->data['token'] . '&offer_id=' . $offer['offer_id'] . '&seller_id=' . $seller_id, 'SSL') . '">' .$offer['offer_name'] . '</a>',
+					'offer_name' => '<a href="' . $this->url->link('multimerch/offer/viewOffer', 'token=' . $this->session->data['token'] . '&offer_id=' . $offer['offer_id'] . '&seller_id=' . $offer['seller_id'], 'SSL') . '">' .$offer['offer_name'] . '</a>',
 					'date_created' => date($this->language->get('date_format_short'), strtotime($offer['date_created'])),
 					'total_amount' => $this->currency->format($offer_total)
 				)
@@ -86,7 +128,6 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 
 		$this->document->setTitle($this->language->get('ms_heading_title_offer'));
 
-
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['tab_general'] = $this->language->get('tab_general');
@@ -109,11 +150,6 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('ms_menu_multiseller'),
-			'href' => $this->url->link('multimerch/dashboard', 'token=' . $this->session->data['token'], 'SSL'),
-		);
-
-		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('ms_catalog_sellers_breadcrumbs'),
 			'href' => $this->url->link('multimerch/seller', 'token=' . $this->session->data['token'], 'SSL'),
 		);
@@ -125,7 +161,7 @@ class ControllerMultimerchOffer extends ControllerMultimerchBase {
 
 		$data['breadcrumbs'][] = array(
 			'text' => 'Offers',
-			'href' => $this->url->link('multimerch/seller/update', 'token=' . $this->session->data['token'] . '&seller_id=' . $this->request->get['seller_id'], 'SSL'),
+			'href' => $this->url->link('multimerch/seller/update', 'token=' . $this->session->data['token'] . '&tab=offers&seller_id=' . $this->request->get['seller_id'], 'SSL'),
 		);
 
 		$data['breadcrumbs'][] = array(
