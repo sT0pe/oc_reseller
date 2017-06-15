@@ -354,6 +354,7 @@ class ControllerMultimerchAccountOffer extends Controller
 				}
 
 				// Display prices
+				$tax = $product['tax'];
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 					$unit_price = $product['price'];
@@ -389,11 +390,13 @@ class ControllerMultimerchAccountOffer extends Controller
 
 				if(isset($product['retail_price']) && $product['retail_price'] != ''){
 					$price_ex_tax  = $product['retail_price']-$product['retail_price']*$product['discount']/100;
-					$price_inc_tax = $price_ex_tax * ($product['tax'] + 100)/100;
+					$price_inc_tax = $price_ex_tax * ($tax + 100)/100;
 				} else {
 					$price_ex_tax  = 0;
 					$price_inc_tax = 0;
 				}
+
+				var_dump($price_inc_tax);
 
 				$data['products'][] = array(
 					'product_id'=> $product['product_id'],
@@ -1135,6 +1138,7 @@ class ControllerMultimerchAccountOffer extends Controller
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
 		$this->load->model('tool/upload');
+		$this->load->language('multiseller/multiseller');
 
 		$arr = explode(",", $_POST['arr']);
 
@@ -1143,6 +1147,7 @@ class ControllerMultimerchAccountOffer extends Controller
 				'product_id' => $_POST['product_id'],
 				'quantity'   => $_POST['quantity']
 			);
+			$json['message'] = $this->language->get('ms_new_quantity_message');
 		} else {
 
 			$product = $this->model_catalog_product->getProduct($_POST['product_id']);
@@ -1210,6 +1215,7 @@ class ControllerMultimerchAccountOffer extends Controller
 			$json['html'] .= '<td class="text-center"><a class="button" onclick="removeProduct(this);"><i class="fa fa-times-circle"></i></a></td>';
 			$json['html'] .= '</tr>';
 
+			$json['message'] = sprintf($this->language->get('ms_new_product_message'),$product['name']);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
@@ -1246,7 +1252,6 @@ class ControllerMultimerchAccountOffer extends Controller
 		$data['column_quantity'] = $this->language->get('column_quantity');
 		$data['column_total']    = $this->language->get('column_total');
 		$data['ms_column_tax']   = $this->language->get('ms_column_tax');
-		$data['ms_quantity_pdf'] = $this->language->get('ms_quantity_pdf');
 		$data['ms_price_netto']  = $this->language->get('ms_price_netto');
 		$data['ms_price_brutto'] = $this->language->get('ms_price_brutto');
 		$data['ms_total_netto']  = $this->language->get('ms_price_netto');

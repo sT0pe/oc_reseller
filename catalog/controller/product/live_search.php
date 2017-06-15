@@ -88,15 +88,23 @@ class ControllerProductLiveSearch extends Controller {
 					} else {
 						$rating = false;
 					}
+
+					$result['name'] = strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'));
+					if(strlen($result['name']) >= $title_length){
+						$name = utf8_substr(strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')), 0, $title_length) . '..';
+					} else {
+						$name = utf8_substr(strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')), 0, $title_length);
+					}
+
 					$json['total'] = (int)$search_result;
 					$json['products'][] = array(
 						'product_id'  => $result['product_id'],
 						'image'       => $image,
-						'name' => utf8_substr(strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')), 0, $title_length) . '..',
-						'extra_info' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $description_length) . '..',
+						'name'        => $name,
+						'extra_info'  => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $description_length) . '..',
 						'price'       => $price,
 						'special'     => $special,
-						'url'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+						'url'         => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 					);
 				}
 			}

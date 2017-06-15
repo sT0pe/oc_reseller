@@ -171,8 +171,8 @@ $_['ms_mail_offer_id']   = 'Offer ID: ';
 
 $_['ms_reply_to_mail']   = 'Please reply to this e-mail if you have any questions.';
 
-
-
+$_['ms_new_product_message']  = 'Product %s have been added to the offer!';
+$_['ms_new_quantity_message'] = 'Product\'s quantity was modified!';
 
 // Seller
 $_['ms_mail_greeting'] = "Hello %s,\n";
@@ -184,7 +184,6 @@ $_['ms_mail_subject_seller_account_created'] = 'Seller account created';
 $_['ms_mail_seller_account_created'] = <<<EOT
 Your seller account at %s has been created!
 
-You can now start adding your products.
 EOT;
 
 $_['ms_mail_subject_seller_account_awaiting_moderation'] = 'Seller account awaiting moderation';
@@ -192,34 +191,6 @@ $_['ms_mail_seller_account_awaiting_moderation'] = <<<EOT
 Your seller account at %s has been created and is now awaiting moderation.
 
 You will receive an email as soon as it is approved.
-EOT;
-
-$_['ms_mail_subject_product_awaiting_moderation'] = 'Product awaiting moderation';
-$_['ms_mail_product_awaiting_moderation'] = <<<EOT
-Your product %s at %s is awaiting moderation.
-
-You will receive an email as soon as it is processed.
-EOT;
-
-$_['ms_mail_subject_product_purchased'] = 'New order';
-$_['ms_mail_product_purchased'] = <<<EOT
-Your product(s) have been purchased from %s.
-
-Customer: %s (%s)
-
-Products:
-%s
-Total: %s
-EOT;
-
-$_['ms_mail_product_purchased_no_email'] = <<<EOT
-Your product(s) have been purchased from %s.
-
-Customer: %s
-
-Products:
-%s
-Total: %s
 EOT;
 
 $_['ms_mail_subject_seller_contact'] = 'New customer message';
@@ -447,89 +418,6 @@ $_['mxt_google_analytics_code'] = 'Tracking ID';
 $_['mxt_google_analytics_code_note'] = 'Specify your Google Analytics tracking ID to track your product and profile performance';
 
 
-$_['ms_account_product_tab_specials'] = 'Special prices';
-$_['ms_account_product_tab_discounts'] = 'Quantity discounts';
-$_['ms_account_product_name_description'] = 'General information';
-$_['ms_account_product_additional_data'] = 'Additional data';
-$_['ms_account_product_search_optimization'] = 'Search optimization';
-
-$_['ms_account_product_name'] = 'Name';
-$_['ms_account_product_name_note'] = 'Specify the name of your product';
-
-$_['ms_account_product_description'] = 'Description';
-$_['ms_account_product_description_note'] = 'Describe your product. Make sure your description is complete and accurate to attract more potential buyers';
-
-$_['ms_account_product_meta_description'] = 'Meta Description';
-$_['ms_account_product_meta_description_note'] = 'Meta Description is used by search engines to describe your product in search results. No formatting';
-
-$_['ms_account_product_seo_keyword'] = 'SEO Keyword';
-$_['ms_account_product_seo_keyword_note'] = 'This will appear in the URL of your product page. Don\'t use spaces or special characters';
-
-$_['ms_account_product_meta_title'] = 'Meta Title';
-$_['ms_account_product_meta_title_note'] = 'Meta Title is what will appear in the title of your product listing page';
-
-$_['ms_account_product_meta_keyword'] = 'Meta Tag Keywords';
-$_['ms_account_product_meta_keyword_note'] = 'Meta Keywords may be used by search engines to determine what your product listing is about';
-
-$_['ms_account_product_tags'] = 'Tags';
-$_['ms_account_product_tags_note'] = 'Specify a list of comma-separated tags that describe your product the best';
-
-$_['ms_account_product_price'] = 'Price';
-$_['ms_account_product_price_note'] = 'Specify the price of your product (e.g. %s1%s000%s00%s)';
-
-$_['ms_account_product_digital'] = 'Digital product';
-
-$_['ms_account_product_attribute'] = 'Attribute';
-$_['ms_account_product_attributes'] = 'Attributes';
-$_['ms_account_product_value'] = 'Value';
-$_['ms_account_product_new_attribute'] = '+ Add attribute';
-
-$_['ms_account_product_listing_balance'] = 'This amount will be deducted from your seller balance.';
-$_['ms_account_product_listing_pg'] = 'You can find your fee requests in Payment requests section.';
-
-$_['ms_account_product_listing_flat'] = 'Listing fee for this product is <span>%s</span>';
-$_['ms_account_product_listing_percent'] = 'Listing fee for this product is based on the product price. Current listing fee: <span>%s</span>.';
-
-$_['ms_account_product_listing_category_note'] = 'Please, select category to get fee rates.';
-$_['ms_account_product_listing_category'] = 'Listing fee for this product is based on the category. Current listing fee: %s.';
-
-$_['ms_account_product_categories'] = 'Marketplace categories';
-$_['ms_account_product_vendor_categories'] = 'My categories';
-$_['ms_account_product_category_select'] = '-- Select category --';
-$_['ms_account_product_category_note'] = 'Choose a category for your product. This will allow the buyers find your item';
-$_['ms_account_product_vendor_category_note'] = 'Choose a category for your product from your own categories list';
-$_['ms_account_product_quantity'] = 'Quantity';
-$_['ms_account_product_quantity_note']    = 'Specify the quantity of your product';
-$_['ms_account_product_minorderqty'] = 'Minimum quantity';
-$_['ms_account_product_minorderqty_note']    = 'Specify the minimum order quantity of your product';
-$_['ms_account_product_files'] = 'Files';
-$_['ms_account_product_download'] = 'Downloads';
-$_['ms_account_product_download_note'] = 'Upload files for your product. Allowed extensions: %s';
-$_['ms_account_product_image'] = 'Images';
-$_['ms_account_product_image_note'] = 'Select images for your product. First image will be used as a thumbnail. You can change the order of the images by dragging them. Allowed extensions: %s';
-//Data Tab
-$_['ms_account_product_model'] = 'Model';
-$_['ms_account_product_sku'] = 'SKU';
-$_['ms_account_product_sku_note'] = 'Stock Keeping Unit';
-$_['ms_account_product_upc']  = 'UPC';
-$_['ms_account_product_upc_note'] = 'Universal Product Code';
-$_['ms_account_product_ean'] = 'EAN';
-$_['ms_account_product_ean_note'] = 'European Article Number';
-$_['ms_account_product_jan'] = 'JAN';
-$_['ms_account_product_jan_note'] = 'Japanese Article Number';
-$_['ms_account_product_isbn'] = 'ISBN';
-$_['ms_account_product_isbn_note'] = 'International Standard Book Number';
-$_['ms_account_product_mpn'] = 'MPN';
-$_['ms_account_product_mpn_note'] = 'Manufacturer Part Number';
-$_['ms_account_product_manufacturer'] = 'Manufacturer';
-$_['ms_account_product_manufacturer_note'] = '(Autocomplete)';
-$_['ms_account_product_tax_class'] = 'Tax Class';
-$_['ms_account_product_date_available'] = 'Date Available';
-$_['ms_account_product_stock_status'] = 'Out Of Stock Status';
-$_['ms_account_product_subtract'] = 'Subtract Stock';
-$_['ms_account_product_customer_group'] = 'Customer Group';
-
-
 // Account - Seller
 $_['ms_account_sellerinfo_heading'] = 'Seller Profile';
 $_['ms_account_sellerinfo_breadcrumbs'] = 'Seller Profile';
@@ -537,20 +425,10 @@ $_['ms_account_sellerinfo_nickname'] = 'Nickname';
 $_['ms_account_sellerinfo_nickname_note'] = 'Specify your seller nickname.';
 $_['ms_account_sellerinfo_description'] = 'Description';
 $_['ms_account_sellerinfo_description_note'] = 'Describe yourself';
-$_['ms_account_sellerinfo_zone'] = 'Region / State';
-$_['ms_account_sellerinfo_zone_select'] = 'Select region/state';
-$_['ms_account_sellerinfo_zone_not_selected'] = 'No region/state selected';
 $_['ms_account_sellerinfo_avatar'] = 'Avatar';
 $_['ms_account_sellerinfo_avatar_note'] = 'Select your avatar';
-$_['ms_account_sellerinfo_banner'] = 'Banner';
-$_['ms_account_sellerinfo_banner_note'] = 'Upload a banner that will be displayed on your profile page';
-$_['ms_account_sellerinfo_reviewer_message'] = 'Message to the reviewer';
-$_['ms_account_sellerinfo_reviewer_message_note'] = 'Your message to the reviewer';
 $_['ms_account_sellerinfo_terms'] = 'Accept terms';
 $_['ms_account_sellerinfo_terms_note'] = 'I have read and agree to the <a class="agree" href="%s" alt="%s"><b>%s</b></a>';
-$_['ms_account_sellerinfo_fee_flat'] = 'There is a signup fee of <span>%s</span> to become a seller at %s.';
-$_['ms_account_sellerinfo_fee_balance'] = 'This amount will be deducted from your initial balance.';
-$_['ms_account_sellerinfo_fee_pg'] = 'You can find your fee requests in Payment requests section.';
 $_['ms_account_sellerinfo_saved'] = 'Seller account data saved.';
 
 $_['ms_account_status'] = 'Your seller account status is: ';
@@ -642,15 +520,6 @@ $_['ms_catalog_sellers_empty'] = 'There are no sellers yet.';
 $_['ms_catalog_seller_profile'] = 'View profile';
 $_['ms_catalog_seller_profile_heading'] = '%s\'s profile';
 $_['ms_catalog_seller_profile_breadcrumbs'] = '%s\'s profile';
-
-$_['ms_catalog_seller_profile_total_sales'] = 'Sales';
-$_['ms_catalog_seller_profile_total_products'] = 'Products';
-$_['ms_catalog_seller_profile_view_products'] = 'View products';
-$_['ms_catalog_seller_profile_featured_products'] = 'Newly published products';
-$_['ms_catalog_seller_profile_view'] = 'View all %s\'s products';
-$_['ms_catalog_seller_profile_search'] = 'Search all products';
-$_['ms_catalog_seller_profile_rating'] = 'Rating';
-$_['ms_catalog_seller_profile_total_reviews'] = '(%s %s)';
 
 // Catalog - Seller contact dialog
 $_['ms_sellercontact_signin'] = 'Please <a href="%s">sign in</a> to contact %s';

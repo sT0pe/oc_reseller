@@ -2,43 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68b5f805-bee6-4cba-a537-1f521633b83c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch/account.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/attribute.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/category-form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/category.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/option.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/payment-form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/payment-request.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/payment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/seller-payout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/javascript/multimerch/settings.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/catalog/view/javascript/multimerch/catalog-seller-profile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/system/storage/cache/cache.country.admin.1497255262" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/system/storage/cache/cache.information.1.1497258556" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/system/storage/cache/cache.language.1497257006" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/system/storage/cache/cache.order_status.1.1497257006" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/system/storage/cache/cache.store.1497258643" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vqmod/mods.cache" afterPath="$PROJECT_DIR$/vqmod/mods.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/controller/multimerch/base.php" afterPath="$PROJECT_DIR$/admin/controller/multimerch/base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/controller/multimerch/conversation.php" afterPath="$PROJECT_DIR$/admin/controller/multimerch/conversation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/controller/multimerch/offer.php" afterPath="$PROJECT_DIR$/admin/controller/multimerch/offer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/controller/multimerch/seller.php" afterPath="$PROJECT_DIR$/admin/controller/multimerch/seller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/language/en-gb/multiseller/multiseller.php" afterPath="$PROJECT_DIR$/admin/language/en-gb/multiseller/multiseller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/view/template/multiseller/conversation.tpl" afterPath="$PROJECT_DIR$/admin/view/template/multiseller/conversation.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/view/template/multiseller/seller-form.tpl" afterPath="$PROJECT_DIR$/admin/view/template/multiseller/seller-form.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/view/template/multiseller/seller.tpl" afterPath="$PROJECT_DIR$/admin/view/template/multiseller/seller.tpl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/controller/multimerch/account_offer.php" afterPath="$PROJECT_DIR$/catalog/controller/multimerch/account_offer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/javascript/account-seller-profile.js" afterPath="$PROJECT_DIR$/catalog/view/javascript/account-seller-profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/javascript/multimerch/common.js" afterPath="$PROJECT_DIR$/catalog/view/javascript/multimerch/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch_messaging.css" afterPath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch_messaging.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multiseller.css" afterPath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multiseller.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/library/msoffer.php" afterPath="$PROJECT_DIR$/system/library/msoffer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/library/msseller.php" afterPath="$PROJECT_DIR$/system/library/msseller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/storage/logs/error.log" afterPath="$PROJECT_DIR$/system/storage/logs/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vqmod/checked.cache" afterPath="$PROJECT_DIR$/vqmod/checked.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vqmod/vqcache/vq2-admin_controller_common_column_left.php" afterPath="$PROJECT_DIR$/vqmod/vqcache/vq2-admin_controller_common_column_left.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vqmod/xml/multimerch_core_admin.xml" afterPath="$PROJECT_DIR$/vqmod/xml/multimerch_core_admin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/controller/product/live_search.php" afterPath="$PROJECT_DIR$/catalog/controller/product/live_search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/language/en-gb/multiseller/multiseller.php" afterPath="$PROJECT_DIR$/catalog/language/en-gb/multiseller/multiseller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/live_search.css" afterPath="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/live_search.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,32 +16,10 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="account.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch/account.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="multimerch_messaging.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch_messaging.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.ic</find>
       <find>update</find>
       <find>ms_menu_conversations</find>
       <find>ms_account_conversations</find>
@@ -104,6 +49,7 @@
       <find>extension=multime</find>
       <find>extension=multimer</find>
       <find>extension=multimerch</find>
+      <find>ms_catalog_sellers_heading</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\opencart\admin\model</dir>
@@ -139,7 +85,6 @@
         <option value="$PROJECT_DIR$/catalog/controller/common/cart.php" />
         <option value="$PROJECT_DIR$/catalog/view/theme/default/template/checkout/cart.tpl" />
         <option value="$PROJECT_DIR$/vqmod/xml/multimerch_core_overrides.xml" />
-        <option value="$PROJECT_DIR$/catalog/language/en-gb/multiseller/multiseller.php" />
         <option value="$PROJECT_DIR$/system/library/msconversation.php" />
         <option value="$PROJECT_DIR$/catalog/controller/account/msconversation.php" />
         <option value="$PROJECT_DIR$/vqmod/xml/live_search.xml" />
@@ -177,6 +122,7 @@
         <option value="$PROJECT_DIR$/admin/view/template/extension/extension.tpl" />
         <option value="$PROJECT_DIR$/admin/controller/extension/extension/module.php" />
         <option value="$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multiseller.css" />
+        <option value="$PROJECT_DIR$/catalog/language/en-gb/multiseller/multiseller.php" />
       </list>
     </option>
   </component>
@@ -237,11 +183,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\opencart\catalog\controller\product" />
+      <recent name="C:\xampp\htdocs\opencart\catalog\controller\multimerch" />
+      <recent name="C:\xampp\htdocs\opencart\catalog\language\en-gb\multiseller" />
       <recent name="C:\xampp\htdocs\opencart\catalog\view\theme\default\stylesheet" />
       <recent name="C:\xampp\htdocs\opencart\catalog\view\javascript" />
-      <recent name="C:\xampp\htdocs\opencart\catalog\view\javascript\multimerch" />
-      <recent name="C:\xampp\htdocs\opencart\admin\view\template\multiseller" />
-      <recent name="C:\xampp\htdocs\opencart\admin\view\image" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -346,19 +292,18 @@
       <workItem from="1497255385269" duration="7171000" />
       <workItem from="1497337081024" duration="9812000" />
       <workItem from="1497364595926" duration="897000" />
-      <workItem from="1497423813275" duration="3356000" />
+      <workItem from="1497423813275" duration="8512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78787000" />
+    <option name="totallyTimeSpent" value="83943000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26399395" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26399395" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -388,9 +333,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/view/image/multiseller/ms-bubble.png" />
-    <entry file="file://$PROJECT_DIR$/admin/view/image/multiseller/ms-cart.png" />
-    <entry file="file://$PROJECT_DIR$/admin/view/image/multiseller/ms-dollar.png" />
     <entry file="file://$PROJECT_DIR$/admin/view/image/multiseller/ms-cross.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -512,6 +454,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="32" />
+          <folding>
+            <marker date="1497344105669" expanded="true" signature="669:994" ph="SELECT s.*, ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="1392:1486" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="1656:1743" ph="SELECT COUNT... ${DB_PREFIX}ms_seller" />
+            <marker date="1497344105669" expanded="true" signature="1945:2038" ph="SELECT first... ${DB_PREFIX}customer" />
+            <marker date="1497344105669" expanded="true" signature="2256:2352" ph="SELECT * FRO... ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="2614:2690" ph="SELECT nickn... ${DB_PREFIX}ms_seller" />
+            <marker date="1497344105669" expanded="true" signature="2891:2977" ph="SELECT email... ${DB_PREFIX}customer" />
+            <marker date="1497344105669" expanded="true" signature="3227:3743" ph="INSERT INTO ${DB_PREFIX}ms_seller... " />
+            <marker date="1497344105669" expanded="true" signature="3932:4145" ph="INSERT INTO ${DB_PREFIX}ms_seller_description... " />
+            <marker date="1497344105669" expanded="true" signature="4519:4680" ph="INSERT INTO ${DB_PREFIX}url_alias... " />
+            <marker date="1497344105669" expanded="true" signature="4747:4864" ph="SELECT nickn... ${DB_PREFIX}ms_seller" />
+            <marker date="1497344105669" expanded="true" signature="6080:6319" ph="INSERT INTO ${DB_PREFIX}ms_seller_description... " />
+            <marker date="1497344105669" expanded="true" signature="6320:6397" ph="UPDATE descr... " />
+            <marker date="1497344105669" expanded="true" signature="6466:6553" ph="DELETE FROM " />
+            <marker date="1497344105669" expanded="true" signature="6611:6772" ph="INSERT INTO ${DB_PREFIX}url_alias... " />
+            <marker date="1497344105669" expanded="true" signature="6862:6961" ph="SELECT avata... ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="7476:7549" ph="SELECT salt ${DB_PREFIX}customer" />
+            <marker date="1497344105669" expanded="true" signature="8091:8178" ph="DELETE FROM " />
+            <marker date="1497344105669" expanded="true" signature="8239:8400" ph="INSERT INTO ${DB_PREFIX}url_alias... " />
+            <marker date="1497344105669" expanded="true" signature="8873:9112" ph="INSERT INTO ${DB_PREFIX}ms_seller_description... " />
+            <marker date="1497344105669" expanded="true" signature="9113:9190" ph="UPDATE descr... " />
+            <marker date="1497344105669" expanded="true" signature="9373:9451" ph="SELECT COUNT... ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="9727:10879" ph="SELECT CONCA... ${DB_PREFIX}customer" />
+            <marker date="1497344105669" expanded="true" signature="13349:13663" ph="SELECT CONCA... ${DB_PREFIX}customer" />
+            <marker date="1497344105669" expanded="true" signature="14447:14512" ph="SELECT offer... ${DB_PREFIX}" />
+            <marker date="1497344105669" expanded="true" signature="14692:14786" ph="DELETE FROM " />
+            <marker date="1497344105669" expanded="true" signature="14840:14926" ph="DELETE FROM " />
+            <marker date="1497344105669" expanded="true" signature="14951:15033" ph="DELETE FROM " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -519,6 +491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="272" column="138" lean-forward="false" selection-start-line="272" selection-start-column="138" selection-end-line="272" selection-end-column="138" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -576,13 +549,6 @@
         <state relative-caret-position="-8433">
           <caret line="287" column="43" lean-forward="false" selection-start-line="287" selection-start-column="43" selection-end-line="287" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/controller/multimerch/account_offer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1228" column="75" lean-forward="true" selection-start-line="1228" selection-start-column="75" selection-end-line="1228" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -695,14 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch/account.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multiseller.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -715,6 +673,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/multimerch/account.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/view/theme/default/stylesheet/live_search.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/language/en-gb/multiseller/multiseller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/controller/product/live_search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/controller/multimerch/account_offer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding />
         </state>
       </provider>
